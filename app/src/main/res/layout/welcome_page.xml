@@ -3,7 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/app_background">
+
+    <View
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#4BFFFFFF" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -15,21 +22,28 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
+            android:id="@+id/welcomeTitle"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="Welcome to Snack Track"
+            android:textSize="30dp"
+            android:textAlignment="center"
+            android:fontFamily="@font/coolvetica"/>
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/welcomeMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_gravity="center"
+            android:text="@string/welcome_message"
+            android:fontFamily="@font/coolvetica"/>
 
         <Button
             android:id="@+id/welcomeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/coolvetica"
             android:text="WELCOME" />
     </LinearLayout>
 
