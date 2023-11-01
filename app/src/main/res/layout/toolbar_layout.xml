@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/homeToolbarButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="home?"
+            app:srcCompat="@drawable/home_icon" />
+
+        <ImageButton
+            android:id="@+id/profileToolbarButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Profile?"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/profile_icon" />
+
+        <ImageButton
+            android:id="@+id/logToolbarButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Log?"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/log_icon" />
+
+        <ImageButton
+            android:id="@+id/overviewToolbarButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Overview?"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/overview_icon" />
+
+        <ImageButton
+            android:id="@+id/exitToolbarButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Exit?"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/exit_icon" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

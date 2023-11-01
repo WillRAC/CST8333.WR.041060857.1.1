@@ -25,7 +25,10 @@
             android:id="@+id/registerBoxTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Register" />
+            android:textSize="30dp"
+            android:textAlignment="center"
+            android:text="Register"
+            android:fontFamily="@font/coolvetica"/>
 
         <EditText
             android:id="@+id/userNameInput"
@@ -34,10 +37,10 @@
             android:text="User Name" />
 
         <EditText
-            android:id="@+id/firstNameInput"
+            android:id="@+id/pwdInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="First Name" />
+            android:text="Password" />
 
 
         <LinearLayout
@@ -46,18 +49,28 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/loginRegisterButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:fontFamily="@font/coolvetica"
+                android:text="Register" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/loginClearButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:fontFamily="@font/coolvetica"
+                android:text="Clear" />
+
+            <Button
+                android:id="@+id/loginEnterButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/coolvetica"
+                android:text="Enter" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
