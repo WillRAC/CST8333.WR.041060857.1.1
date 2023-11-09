@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/app_background">
+
+    <View
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#4BFFFFFF" />
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/registerBoxTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:textAlignment="center"
+            android:text="Overview"
+            android:fontFamily="@font/coolvetica"/>
+
+
+        <TextView
+            android:id="@+id/registerBoxTitle2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Day"
+            android:textSize="20dp"
+            android:fontFamily="@font/coolvetica"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/calDayTotalTitle"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cal Total"
+                android:textSize="15dp"
+                android:fontFamily="@font/coolvetica"/>
+
+            <TextView
+                android:id="@+id/calDayTotalInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/minDayTotalTitle"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Min Total"
+                android:textSize="15dp"
+                android:fontFamily="@font/coolvetica"/>
+
+            <TextView
+                android:id="@+id/minDayTotalInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/registerBoxTitle3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Week"
+            android:textSize="20dp"
+            android:fontFamily="@font/coolvetica"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/calWeekTotalTitle"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cal Total"
+                android:textSize="15dp"
+                android:fontFamily="@font/coolvetica"/>
+
+            <TextView
+                android:id="@+id/calWeekTotalInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/minWeekTotalTitle"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Min Total"
+                android:textSize="15dp"
+                android:fontFamily="@font/coolvetica"/>
+
+            <TextView
+                android:id="@+id/minWeekTotalInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/requestSummaryButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Request Summary" />
+
+    </LinearLayout>
+
+    <include layout="@layout/toolbar_layout" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

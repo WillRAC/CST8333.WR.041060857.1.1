@@ -22,12 +22,12 @@
         android:background="@color/white">
 
         <TextView
-            android:id="@+id/registerBoxTitle"
+            android:id="@+id/loginBoxTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30dp"
             android:textAlignment="center"
-            android:text="Register"
+            android:text="Login"
             android:fontFamily="@font/coolvetica"/>
 
         <EditText
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/coolvetica"
-                android:text="Clear" />
+                android:text="Clear*g*" />
 
             <Button
                 android:id="@+id/loginEnterButton"
