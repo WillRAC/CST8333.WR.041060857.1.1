@@ -9,6 +9,7 @@ import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 
 class LogActivity : AppCompatActivity() {
 
@@ -16,7 +17,7 @@ class LogActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.log_page)
 
-        val toolbar = findViewById<LinearLayout>(R.id.toolbar_layout)
+        val toolbar = findViewById<ConstraintLayout>(R.id.toolbar_layout)
         val tbhButton = toolbar.findViewById<ImageButton>(R.id.homeToolbarButton)
         val tbpButton = toolbar.findViewById<ImageButton>(R.id.profileToolbarButton)
         val tblButton = toolbar.findViewById<ImageButton>(R.id.logToolbarButton)
