@@ -7,7 +7,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 
-class HomeActivity : AppCompatActivity() {
+class ToolbarActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
