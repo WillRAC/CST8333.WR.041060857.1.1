@@ -16,6 +16,7 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".LogActivity" />
+        <activity android:name=".OverviewActivity" />
         <activity
             android:name=".WelcomeActivity"
             android:exported="true"
