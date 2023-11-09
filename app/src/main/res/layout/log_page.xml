@@ -73,6 +73,8 @@
 
     </LinearLayout>
 
-    <include layout="@layout/toolbar_layout" />
+    <include
+        android:id="@+id/toolbar_layout"
+        layout="@layout/toolbar_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
