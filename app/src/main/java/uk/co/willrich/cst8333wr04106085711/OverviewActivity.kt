@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.Toolbar
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 
@@ -42,12 +43,30 @@ class OverviewActivity : AppCompatActivity() {
             val intent = Intent(this, OverviewActivity::class.java)
             startActivity(intent)
         }
-
-
-
-
-
-
+        tbeButton.setOnClickListener {
+            showExitConfirmationDialog()
+        }
 
     }
+
+    private fun showExitConfirmationDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Exit Confirmation")
+            .setMessage("Are you sure you want to exit?")
+            .setPositiveButton("Yes") { dialog, which ->
+                finishAffinity()
+            }
+            .setNegativeButton("No", null)
+
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+
+
+
+
+
+
+
 }

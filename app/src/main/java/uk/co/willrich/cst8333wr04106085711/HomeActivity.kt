@@ -45,12 +45,11 @@ class HomeActivity : AppCompatActivity() {
         builder.setTitle("Exit Confirmation")
             .setMessage("Are you sure you want to exit?")
             .setPositiveButton("Yes") { dialog, which ->
-                finish() // Close the activity and exit the app
+                finishAffinity()
             }
-            .setNegativeButton("No", null) // Do nothing if "No" is clicked
+            .setNegativeButton("No", null)
 
         val dialog = builder.create()
         dialog.show()
     }
     }
-}

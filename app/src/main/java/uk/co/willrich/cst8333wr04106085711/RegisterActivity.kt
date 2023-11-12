@@ -55,31 +55,25 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         eButton.setOnClickListener {
-
-            val builder = AlertDialog.Builder(this)
-
-
-            builder.setTitle("Confirmation")
-                .setMessage("Are you sure you want to close the app?")
-
-
-            builder.setPositiveButton("Yes") { dialog, which ->
-
-                finishAffinity()
-            }
-
-            builder.setNegativeButton("No") { dialog, which ->
-
-                dialog.dismiss()
-            }
-
-
-            val dialog = builder.create()
-            dialog.show()
+            showExitConfirmationDialog()
         }
 
-        // End of toolbar
-
-
     }
+
+    private fun showExitConfirmationDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Exit Confirmation")
+            .setMessage("Are you sure you want to exit?")
+            .setPositiveButton("Yes") { dialog, which ->
+                finishAffinity()
+            }
+            .setNegativeButton("No", null)
+
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+
+
+
 }
