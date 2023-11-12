@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
 class HomeActivity : AppCompatActivity() {
@@ -16,7 +17,7 @@ class HomeActivity : AppCompatActivity() {
         val lButton = findViewById<ImageButton>(R.id.logHomeButton)
         val oButton = findViewById<ImageButton>(R.id.overviewHomeButton)
         val pButton = findViewById<ImageButton>(R.id.profileHomeButton)
-        val etButton = findViewById<ImageButton>(R.id.exitHomeButton)
+        val eButton = findViewById<ImageButton>(R.id.exitHomeButton)
 
         lButton.setOnClickListener {
             val intent = Intent(this, LogActivity::class.java)
@@ -32,5 +33,24 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
+
+        eButton.setOnClickListener {
+            showExitConfirmationDialog()
+        }
+
+    }
+
+    private fun showExitConfirmationDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Exit Confirmation")
+            .setMessage("Are you sure you want to exit?")
+            .setPositiveButton("Yes") { dialog, which ->
+                finish() // Close the activity and exit the app
+            }
+            .setNegativeButton("No", null) // Do nothing if "No" is clicked
+
+        val dialog = builder.create()
+        dialog.show()
+    }
     }
 }

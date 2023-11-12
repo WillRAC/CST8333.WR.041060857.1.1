@@ -13,6 +13,7 @@ class WelcomeActivity : AppCompatActivity() {
 
         val wButton = findViewById<Button>(R.id.welcomeButton)
 
+
         wButton.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)

@@ -34,13 +34,13 @@
             android:id="@+id/userNameInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="User Name" />
+            android:hint="User Name" />
 
         <EditText
             android:id="@+id/pwdInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Password" />
+            android:hint="Password" />
 
 
         <LinearLayout

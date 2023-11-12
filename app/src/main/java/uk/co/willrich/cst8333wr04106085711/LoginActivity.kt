@@ -22,9 +22,19 @@ class LoginActivity : AppCompatActivity() {
         val userNameText = findViewById<EditText>(R.id.userNameInput)
         val pwdText = findViewById<EditText>(R.id.pwdInput)
 
-        cButton.setOnClickListener {
+        rButton.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
+        eButton.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
+        }
+
+        cButton.setOnClickListener {
+            userNameText.text.clear()
+            pwdText.text.clear()
         }
 
 
