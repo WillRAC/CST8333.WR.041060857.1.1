@@ -1,6 +1,6 @@
 package uk.co.willrich.cst8333wr04106085711
 
-class UserData(
+class UserMain(
     val id: Long,
     val username: String,
     val firstname: String,
