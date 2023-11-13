@@ -78,13 +78,13 @@ class ProfileActivity : AppCompatActivity() {
         val user = dbHelper.getUser(username ?: "")
 
         if (user != null) {
-            userNameTextView.text = user.username
-            firstNameTextView.text = user.firstname
-            lastNameTextView.text = user.lastname
-            genderTextView.text = user.gender
-            heightTextView.text = user.height.toString()
-            weightTextView.text = user.weight.toString()
-            emailTextView.text = user.email
+            userNameTextView.text = "Username: ${user.username}"
+            firstNameTextView.text = "First Name: ${user.firstname}"
+            lastNameTextView.text = "Last Name: ${user.lastname}"
+            genderTextView.text = "Gender: ${user.gender}"
+            heightTextView.text = "Height: ${user.height}"
+            weightTextView.text = "Weight: ${user.weight}"
+            emailTextView.text = "Email: ${user.email}"
         }
     }
 
