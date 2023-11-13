@@ -1,22 +1,48 @@
 package uk.co.willrich.cst8333wr04106085711
 
 import android.content.Intent
-import android.media.Image
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.LinearLayout
-import android.widget.Toolbar
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 
 class ProfileActivity : AppCompatActivity() {
 
+    private var username: String? = null
+
+    private lateinit var userNameTextView: TextView
+    private lateinit var firstNameTextView: TextView
+    private lateinit var lastNameTextView: TextView
+    private lateinit var genderTextView: TextView
+    private lateinit var heightTextView: TextView
+    private lateinit var weightTextView: TextView
+    private lateinit var emailTextView: TextView
+    private lateinit var clearButton: Button
+    private lateinit var submitButton: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.profile_page)
+
+        // Retrieve the username from the intent
+        username = intent.getStringExtra("username")
+
+        userNameTextView = findViewById(R.id.userNameProfileInput)
+        firstNameTextView = findViewById(R.id.firstNameProfileInput)
+        lastNameTextView = findViewById(R.id.lastNameProfileInput)
+        genderTextView = findViewById(R.id.genderProfileInput)
+        heightTextView = findViewById(R.id.heightProfileInput)
+        weightTextView = findViewById(R.id.weightProfileInput)
+        emailTextView = findViewById(R.id.emailProfileInput)
+
+        clearButton = findViewById(R.id.clearButton)
+        submitButton = findViewById(R.id.submitButton)
+
+        // Update user details on profile page
+        updateUserDetails()
 
         val toolbar = findViewById<ConstraintLayout>(R.id.toolbar_layout)
         val tbhButton = toolbar.findViewById<ImageButton>(R.id.homeToolbarButton)
@@ -47,7 +73,21 @@ class ProfileActivity : AppCompatActivity() {
         tbeButton.setOnClickListener {
             showExitConfirmationDialog()
         }
+    }
 
+    private fun updateUserDetails() {
+        val dbHelper = DatabaseHelper(this)
+        val user = dbHelper.getUser(username ?: "")
+
+        if (user != null) {
+            userNameTextView.text = user.username
+            firstNameTextView.text = user.firstname
+            lastNameTextView.text = user.lastname
+            genderTextView.text = user.gender
+            heightTextView.text = user.height.toString()
+            weightTextView.text = user.weight.toString()
+            emailTextView.text = user.email
+        }
     }
 
     private fun showExitConfirmationDialog() {
@@ -61,13 +101,5 @@ class ProfileActivity : AppCompatActivity() {
 
         val dialog = builder.create()
         dialog.show()
-    }
-
-
-
-
-
-
-
     }
 }
