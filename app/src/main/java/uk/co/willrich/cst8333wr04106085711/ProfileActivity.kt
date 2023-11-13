@@ -38,8 +38,6 @@ class ProfileActivity : AppCompatActivity() {
         weightTextView = findViewById(R.id.weightProfileInput)
         emailTextView = findViewById(R.id.emailProfileInput)
 
-        clearButton = findViewById(R.id.clearButton)
-        submitButton = findViewById(R.id.submitButton)
 
         // Update user details on profile page
         updateUserDetails()
