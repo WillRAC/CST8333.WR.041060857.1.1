@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import java.util.Date
 
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -114,7 +115,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         val db = this.writableDatabase
         val values = ContentValues().apply {
             put(KEY_USER_ID, userData.userId)
-            put(KEY_DATE, userData.date)
+            put(KEY_DATE, userData.date.time)  // Convert Date to Long
             put(KEY_CALORIE, userData.calorie)
             put(KEY_MINUTES, userData.minutes)
         }
@@ -122,9 +123,9 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     }
 
     @SuppressLint("Range")
-    fun getUserData(userId: Long, date: Long): UserData? {
+    fun getUserData(userId: Long, date: Date): UserData? {
         val db = this.readableDatabase
-        val query = "SELECT * FROM $TABLE_USER_DATA WHERE $KEY_USER_ID = $userId AND $KEY_DATE = $date"
+        val query = "SELECT * FROM $TABLE_USER_DATA WHERE $KEY_USER_ID = $userId AND $KEY_DATE = ${date.time}"
         val cursor = db.rawQuery(query, null)
 
         return try {
@@ -132,7 +133,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 UserData(
                     id = cursor.getLong(cursor.getColumnIndex(KEY_ID)),
                     userId = cursor.getLong(cursor.getColumnIndex(KEY_USER_ID)),
-                    date = cursor.getLong(cursor.getColumnIndex(KEY_DATE)),
+                    date = Date(cursor.getLong(cursor.getColumnIndex(KEY_DATE))),  // Convert Long to Date
                     calorie = cursor.getInt(cursor.getColumnIndex(KEY_CALORIE)),
                     minutes = cursor.getInt(cursor.getColumnIndex(KEY_MINUTES))
                 )

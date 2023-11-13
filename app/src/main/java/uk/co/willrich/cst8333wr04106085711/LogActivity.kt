@@ -23,6 +23,30 @@ class LogActivity : AppCompatActivity() {
         val weightLog = findViewById<EditText>(R.id.WeightLogInput)
         val minLog = findViewById<EditText>(R.id.MinLogInput)
         val calLog = findViewById<EditText>(R.id.CalorieLogInput)
+        val submitButton = findViewById<Button>(R.id.logSubmitButton)
+
+        submitButton.setOnClickListener {
+            // Extract entered values
+            val weightValue = weightLog.text.toString().toDoubleOrNull() ?: 0.0
+            val minuteValue = minLog.text.toString().toIntOrNull() ?: 0
+            val calorieValue = calLog.text.toString().toIntOrNull() ?: 0
+
+            // Get current date as Date
+            val currentDate = Calendar.getInstance().time
+
+            // Insert data into userData table
+            val dbHelper = DatabaseHelper(this)
+            val userId = dbHelper.getUser(username ?: "")?.id ?: 0
+            val userData = UserData(0, userId, currentDate, calorieValue, minuteValue) // Use a placeholder for id (0)
+            dbHelper.addUserData(userData)
+
+            // Clear input fields
+            weightLog.text.clear()
+            minLog.text.clear()
+            calLog.text.clear()
+        }
+
+
 
 
 
