@@ -5,7 +5,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import java.time.ZoneId
 
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -115,7 +114,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         val db = this.writableDatabase
         val values = ContentValues().apply {
             put(KEY_USER_ID, userData.userId)
-            put(KEY_DATE, userData.date.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli())
+            put(KEY_DATE, userData.date)
             put(KEY_CALORIE, userData.calorie)
             put(KEY_MINUTES, userData.minutes)
         }

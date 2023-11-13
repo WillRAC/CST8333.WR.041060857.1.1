@@ -8,7 +8,6 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import java.time.LocalDate
 import java.util.Calendar
 
 class LogActivity : AppCompatActivity() {
@@ -25,27 +24,7 @@ class LogActivity : AppCompatActivity() {
         val minLog = findViewById<EditText>(R.id.MinLogInput)
         val calLog = findViewById<EditText>(R.id.CalorieLogInput)
 
-        val submitButton = findViewById<Button>(R.id.logSubmitButton)
-        submitButton.setOnClickListener {
-            // Extract entered values
-            val weightValue = weightLog.text.toString().toDoubleOrNull() ?: 0.0
-            val minuteValue = minLog.text.toString().toIntOrNull() ?: 0
-            val calorieValue = calLog.text.toString().toIntOrNull() ?: 0
 
-            // Get current date
-            val currentDate = LocalDate.now()
-
-            // Insert data into userData table
-            val dbHelper = DatabaseHelper(this)
-            val userId = dbHelper.getUser(username ?: "")?.id ?: 0
-            val userData = UserData(userId, currentDate, calorieValue, minuteValue)
-            dbHelper.addUserData(userData)
-
-            // Clear input fields
-            weightLog.text.clear()
-            minLog.text.clear()
-            calLog.text.clear()
-        }
 
 
         val toolbar = findViewById<ConstraintLayout>(R.id.toolbar_layout)
