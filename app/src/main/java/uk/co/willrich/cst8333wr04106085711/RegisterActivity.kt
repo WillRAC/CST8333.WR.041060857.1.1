@@ -15,6 +15,8 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register_page)
 
+        val username = intent.getStringExtra("username")
+
         val sButton = findViewById<Button>(R.id.submitButton)
         val cButton = findViewById<Button>(R.id.clearButton)
         val userNameText = findViewById<EditText>(R.id.userNameInput)
@@ -36,21 +38,25 @@ class RegisterActivity : AppCompatActivity() {
 
         hButton.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("username", username)
             startActivity(intent)
         }
 
         pButton.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
+            intent.putExtra("username", username)
             startActivity(intent)
         }
 
         lButton.setOnClickListener {
             val intent = Intent(this, LogActivity::class.java)
+            intent.putExtra("username", username)
             startActivity(intent)
         }
 
         oButton.setOnClickListener {
             val intent = Intent(this, OverviewActivity::class.java)
+            intent.putExtra("username", username)
             startActivity(intent)
         }
 

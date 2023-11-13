@@ -48,20 +48,25 @@ class ProfileActivity : AppCompatActivity() {
 
         tbhButton.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("username", username)
             startActivity(intent)
         }
 
         tbpButton.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
+            intent.putExtra("username", username)
             startActivity(intent)
         }
 
-        tblButton.setOnClickListener {
+       tblButton.setOnClickListener {
             val intent = Intent(this, LogActivity::class.java)
+            intent.putExtra("username", username)
             startActivity(intent)
         }
+
         tboButton.setOnClickListener {
             val intent = Intent(this, OverviewActivity::class.java)
+            intent.putExtra("username", username)
             startActivity(intent)
         }
 
