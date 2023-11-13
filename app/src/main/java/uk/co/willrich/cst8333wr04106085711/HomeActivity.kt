@@ -23,11 +23,13 @@ class HomeActivity : AppCompatActivity() {
 
         lButton.setOnClickListener {
             val intent = Intent(this, LogActivity::class.java)
+            intent.putExtra("username", username)
             startActivity(intent)
         }
 
         oButton.setOnClickListener {
             val intent = Intent(this, OverviewActivity::class.java)
+            intent.putExtra("username", username)
             startActivity(intent)
         }
 
