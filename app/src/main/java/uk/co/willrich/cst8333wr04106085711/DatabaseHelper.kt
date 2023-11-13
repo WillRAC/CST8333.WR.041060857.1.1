@@ -42,17 +42,17 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 + "$KEY_WEIGHT INTEGER,"
                 + "$KEY_HEIGHT INTEGER,"
                 + "$KEY_EMAIL TEXT,"
-                + "$KEY_PASSWORD TEXT,"
-                )
+                + "$KEY_PASSWORD TEXT"  // Removed the trailing comma
+                + ")")
         db.execSQL(createUserTable)
 
         val createUserDataTable = ("CREATE TABLE $TABLE_USER_DATA ("
                 + "$KEY_ID INTEGER PRIMARY KEY,"
                 + "$KEY_USER_ID INTEGER,"
-                + "$KEY_DATE INTEGER,"  // Change the type to INTEGER for storing milliseconds
+                + "$KEY_DATE INTEGER,"
                 + "$KEY_CALORIE INTEGER,"
-                + "$KEY_MINUTES INTEGER)"
-                )
+                + "$KEY_MINUTES INTEGER"
+                + ")")
         db.execSQL(createUserDataTable)
     }
 
