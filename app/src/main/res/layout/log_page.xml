@@ -31,25 +31,25 @@
             android:text="Activity Log" />
 
         <EditText
-            android:id="@+id/DateLogInput"
+            android:id="@+id/MinLogInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:text="Min Total" />
+            android:hint="Min Total" />
 
         <EditText
             android:id="@+id/WeightLogInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:text="Weight" />
+            android:hint="Weight" />
 
         <EditText
             android:id="@+id/CalorieLogInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:text="Calorie Total" />
+            android:hint="Calorie Total" />
 
         <LinearLayout
             android:layout_width="match_parent"
