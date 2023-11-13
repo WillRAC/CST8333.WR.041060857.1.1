@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.LinearLayout
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -28,8 +29,25 @@ class LoginActivity : AppCompatActivity() {
         }
 
         eButton.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+            val enteredUsername = userNameText.text.toString()
+            val enteredPassword = pwdText.text.toString()
+
+            val dbHelper = DatabaseHelper(this)
+            val user = dbHelper.getUser(enteredUsername)
+
+            if (user != null && user.password == enteredPassword) {
+                // Successful login, navigate to the home screen or another screen
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+            } else {
+                // Invalid login, show an error message
+                // You might want to display a more specific error message based on whether the username or password is incorrect
+                AlertDialog.Builder(this)
+                    .setTitle("Login Failed")
+                    .setMessage("Invalid username or password.")
+                    .setPositiveButton("OK", null)
+                    .show()
+            }
         }
 
         cButton.setOnClickListener {

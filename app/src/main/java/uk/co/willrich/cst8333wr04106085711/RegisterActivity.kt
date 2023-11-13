@@ -58,6 +58,35 @@ class RegisterActivity : AppCompatActivity() {
             showExitConfirmationDialog()
         }
 
+        sButton.setOnClickListener {
+            val newUser = UserMain(
+                id = 0,  // You may leave this as 0 since it will be auto-generated in the database
+                username = userNameText.text.toString(),
+                firstname = firstNameText.text.toString(),
+                lastname = lastNameText.text.toString(),
+                gender = if (maleCheck.isChecked) "Male" else if (femaleCheck.isChecked) "Female" else "",
+                weight = weightText.text.toString().toDoubleOrNull() ?: 0.0,
+                height = 0.0,  // Set default height or get it from the UI
+                email = emailText.text.toString(),
+                password = pwdText.text.toString()
+            )
+
+            val dbHelper = DatabaseHelper(this)
+            val userId = dbHelper.addUser(newUser)
+
+            if (userId != -1L) {
+                // User added successfully, you can navigate to another screen or show a success message
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            } else {
+                AlertDialog.Builder(this)
+                    .setTitle("Register Failed")
+                    .setMessage("Error with Registration")
+                    .setPositiveButton("OK", null)
+                    .show()
+            }
+        }
+
     }
 
     private fun showExitConfirmationDialog() {
