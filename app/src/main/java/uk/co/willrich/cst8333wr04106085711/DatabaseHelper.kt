@@ -5,6 +5,8 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.database.sqlite.SQLiteQueryBuilder
+import android.util.Log
 
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -78,8 +80,12 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     @SuppressLint("Range")
     fun getUser(username: String): UserMain? {
         val db = this.readableDatabase
-        val cursor = db.query(
-            TABLE_USERS,
+
+        val queryBuilder = SQLiteQueryBuilder()
+        queryBuilder.tables = TABLE_USERS
+
+        val cursor = queryBuilder.query(
+            db,
             null,
             "$KEY_USERNAME = ?",
             arrayOf(username),
@@ -87,6 +93,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             null,
             null
         )
+
+        Log.d("UserProfile", "Query: ${queryBuilder.buildQuery(null, null, null, null, null, null)}")
 
         return try {
             if (cursor.moveToFirst()) {
