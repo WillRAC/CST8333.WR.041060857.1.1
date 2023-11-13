@@ -98,7 +98,10 @@ class OverviewActivity : AppCompatActivity() {
         val currentDate = Calendar.getInstance().timeInMillis
 
         // Day totals
-        val dayUserData = dbHelper.getUserData(user?.id ?: 0, Date(currentDate))
+        val dayUserData = dbHelper.getUserData(user?.id ?: 0, Calendar.getInstance().time)
+        Log.d("OverviewActivity", "Day UserData: $dayUserData")
+        // trying to find issue
+
         if (dayUserData != null) {
             calDayTotalInput.text = dayUserData.calorie.toString()
             minDayTotalInput.text = dayUserData.minutes.toString()
@@ -111,6 +114,10 @@ class OverviewActivity : AppCompatActivity() {
         val oneWeekAgo = Calendar.getInstance()
         oneWeekAgo.add(Calendar.DAY_OF_MONTH, -7)
         val weekUserData = dbHelper.getUserData(user?.id ?: 0, oneWeekAgo.time)
+        Log.d("OverviewActivity", "Week UserData: $weekUserData")
+        // trying to find issue
+
+
         if (weekUserData != null) {
             calWeekTotalInput.text = weekUserData.calorie.toString()
             minWeekTotalInput.text = weekUserData.minutes.toString()
