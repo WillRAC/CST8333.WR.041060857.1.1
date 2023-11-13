@@ -78,7 +78,7 @@ class ProfileActivity : AppCompatActivity() {
         val dbHelper = DatabaseHelper(this)
         val user = dbHelper.getUser(username ?: "")
 
-        Log.d("UserProfile", "User: $user") // Add this line to log the user object
+        Log.d("UserProfile", "User: $user")
 
         if (user != null) {
             userNameTextView.text = "Username: ${user.username}"

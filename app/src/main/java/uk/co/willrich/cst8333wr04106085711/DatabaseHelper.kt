@@ -28,8 +28,6 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         private const val KEY_DATE = "date"
         private const val KEY_CALORIE = "calorie"
         private const val KEY_MINUTES = "minutes"
-
-
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -42,7 +40,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 + "$KEY_WEIGHT INTEGER,"
                 + "$KEY_HEIGHT INTEGER,"
                 + "$KEY_EMAIL TEXT,"
-                + "$KEY_PASSWORD TEXT"  // Removed the trailing comma
+                + "$KEY_PASSWORD TEXT"
                 + ")")
         db.execSQL(createUserTable)
 
@@ -64,15 +62,16 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     fun addUser(user: UserMain): Long {
         val db = this.writableDatabase
-        val values = ContentValues()
-        values.put(KEY_USERNAME, user.username)
-        values.put(KEY_FIRSTNAME, user.firstname)
-        values.put(KEY_LASTNAME, user.lastname)
-        values.put(KEY_GENDER, user.gender)
-        values.put(KEY_WEIGHT, user.weight)
-        values.put(KEY_HEIGHT, user.height)
-        values.put(KEY_EMAIL, user.email)
-        values.put(KEY_PASSWORD, user.password)
+        val values = ContentValues().apply {
+            put(KEY_USERNAME, user.username)
+            put(KEY_FIRSTNAME, user.firstname)
+            put(KEY_LASTNAME, user.lastname)
+            put(KEY_GENDER, user.gender)
+            put(KEY_WEIGHT, user.weight)
+            put(KEY_HEIGHT, user.height)
+            put(KEY_EMAIL, user.email)
+            put(KEY_PASSWORD, user.password)
+        }
         return db.insert(TABLE_USERS, null, values)
     }
 
@@ -112,11 +111,12 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     fun addUserData(userData: UserData): Long {
         val db = this.writableDatabase
-        val values = ContentValues()
-        values.put(KEY_USER_ID, userData.userId)
-        values.put(KEY_DATE, userData.date)
-        values.put(KEY_CALORIE, userData.calorie)
-        values.put(KEY_MINUTES, userData.minutes)
+        val values = ContentValues().apply {
+            put(KEY_USER_ID, userData.userId)
+            put(KEY_DATE, userData.date)
+            put(KEY_CALORIE, userData.calorie)
+            put(KEY_MINUTES, userData.minutes)
+        }
         return db.insert(TABLE_USER_DATA, null, values)
     }
 
