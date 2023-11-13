@@ -21,14 +21,12 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var heightTextView: TextView
     private lateinit var weightTextView: TextView
     private lateinit var emailTextView: TextView
-    private lateinit var clearButton: Button
-    private lateinit var submitButton: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.profile_page)
 
-        // Retrieve the username from the intent
         username = intent.getStringExtra("username")
 
         userNameTextView = findViewById(R.id.userNameProfileInput)
@@ -39,8 +37,6 @@ class ProfileActivity : AppCompatActivity() {
         weightTextView = findViewById(R.id.weightProfileInput)
         emailTextView = findViewById(R.id.emailProfileInput)
 
-
-        // Update user details on profile page
         updateUserDetails()
 
         val toolbar = findViewById<ConstraintLayout>(R.id.toolbar_layout)

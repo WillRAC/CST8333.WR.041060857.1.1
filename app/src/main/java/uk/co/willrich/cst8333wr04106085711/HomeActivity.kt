@@ -14,6 +14,8 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_page)
 
+        val username = intent.getStringExtra("username")
+
         val lButton = findViewById<ImageButton>(R.id.logHomeButton)
         val oButton = findViewById<ImageButton>(R.id.overviewHomeButton)
         val pButton = findViewById<ImageButton>(R.id.profileHomeButton)
@@ -31,6 +33,7 @@ class HomeActivity : AppCompatActivity() {
 
         pButton.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
+            intent.putExtra("username", username)
             startActivity(intent)
         }
 

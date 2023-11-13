@@ -36,8 +36,9 @@ class LoginActivity : AppCompatActivity() {
             val user = dbHelper.getUser(enteredUsername)
 
             if (user != null && user.password == enteredPassword) {
-                // Successful login, navigate to the home screen or another screen
+                // Successful login, navigate to the home screen and pass the username and details
                 val intent = Intent(this, HomeActivity::class.java)
+                intent.putExtra("username", enteredUsername)
                 startActivity(intent)
             } else {
                 // Invalid login, show an error message
