@@ -79,8 +79,15 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     @SuppressLint("Range")
     fun getUser(username: String): UserMain? {
         val db = this.readableDatabase
-        val query = "SELECT * FROM $TABLE_USERS WHERE $KEY_USERNAME = '$username'"
-        val cursor = db.rawQuery(query, null)
+        val cursor = db.query(
+            TABLE_USERS,
+            null,
+            "$KEY_USERNAME = ?",
+            arrayOf(username),
+            null,
+            null,
+            null
+        )
 
         return try {
             if (cursor.moveToFirst()) {
