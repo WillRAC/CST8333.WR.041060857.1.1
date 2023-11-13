@@ -2,6 +2,7 @@ package uk.co.willrich.cst8333wr04106085711
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -26,21 +27,22 @@ class LogActivity : AppCompatActivity() {
         val submitButton = findViewById<Button>(R.id.logSubmitButton)
 
         submitButton.setOnClickListener {
-            // Extract entered values
+
             val weightValue = weightLog.text.toString().toDoubleOrNull() ?: 0.0
             val minuteValue = minLog.text.toString().toIntOrNull() ?: 0
             val calorieValue = calLog.text.toString().toIntOrNull() ?: 0
 
-            // Get current date as Date
             val currentDate = Calendar.getInstance().time
 
-            // Insert data into userData table
+            Log.d("LogActivity", "Username: $username, Weight: $weightValue, Minutes: $minuteValue, Calories: $calorieValue, Date: $currentDate")
+
+
             val dbHelper = DatabaseHelper(this)
             val userId = dbHelper.getUser(username ?: "")?.id ?: 0
-            val userData = UserData(0, userId, currentDate, calorieValue, minuteValue) // Use a placeholder for id (0)
+            val userData = UserData(0, userId, currentDate, calorieValue, minuteValue)
             dbHelper.addUserData(userData)
 
-            // Clear input fields
+
             weightLog.text.clear()
             minLog.text.clear()
             calLog.text.clear()

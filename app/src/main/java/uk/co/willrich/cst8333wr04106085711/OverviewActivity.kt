@@ -118,6 +118,9 @@ class OverviewActivity : AppCompatActivity() {
             calWeekTotalInput.text = "0"
             minWeekTotalInput.text = "0"
         }
+
+        val userId = dbHelper.getUser(username ?: "")?.id ?: 0
+        Log.d("OverviewActivity", "User ID: $userId")
     }
 
 
