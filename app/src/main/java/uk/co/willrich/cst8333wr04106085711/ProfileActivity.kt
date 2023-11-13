@@ -2,6 +2,7 @@ package uk.co.willrich.cst8333wr04106085711
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
@@ -77,6 +78,8 @@ class ProfileActivity : AppCompatActivity() {
         val dbHelper = DatabaseHelper(this)
         val user = dbHelper.getUser(username ?: "")
 
+        Log.d("UserProfile", "User: $user") // Add this line to log the user object
+
         if (user != null) {
             userNameTextView.text = "Username: ${user.username}"
             firstNameTextView.text = "First Name: ${user.firstname}"
@@ -85,6 +88,8 @@ class ProfileActivity : AppCompatActivity() {
             heightTextView.text = "Height: ${user.height}"
             weightTextView.text = "Weight: ${user.weight}"
             emailTextView.text = "Email: ${user.email}"
+        } else {
+            Log.d("UserProfile", "User is null")
         }
     }
 
