@@ -34,6 +34,9 @@ class OverviewActivity : AppCompatActivity() {
         calWeekTotalInput = findViewById(R.id.calWeekTotalInput)
         minWeekTotalInput = findViewById(R.id.minWeekTotalInput)
 
+        username = intent.getStringExtra("username")
+
+
         val toolbar = findViewById<ConstraintLayout>(R.id.toolbar_layout)
         val tbhButton = toolbar.findViewById<ImageButton>(R.id.homeToolbarButton)
         val tbpButton = toolbar.findViewById<ImageButton>(R.id.profileToolbarButton)
