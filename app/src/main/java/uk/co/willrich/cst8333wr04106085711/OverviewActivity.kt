@@ -1,20 +1,14 @@
 package uk.co.willrich.cst8333wr04106085711
 
 import android.content.Intent
-import android.media.Image
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toolbar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import java.util.Calendar
-import java.util.Date
 
 class OverviewActivity : AppCompatActivity() {
 
@@ -97,10 +91,11 @@ class OverviewActivity : AppCompatActivity() {
         // Get current date in milliseconds
         val currentDate = Calendar.getInstance().timeInMillis
 
+        Log.d("OverviewActivity", "Current Date: $currentDate")
+
         // Day totals
         val dayUserData = dbHelper.getUserData(user?.id ?: 0, Calendar.getInstance().time)
         Log.d("OverviewActivity", "Day UserData: $dayUserData")
-        // trying to find issue
 
         if (dayUserData != null) {
             calDayTotalInput.text = dayUserData.calorie.toString()
@@ -115,8 +110,6 @@ class OverviewActivity : AppCompatActivity() {
         oneWeekAgo.add(Calendar.DAY_OF_MONTH, -7)
         val weekUserData = dbHelper.getUserData(user?.id ?: 0, oneWeekAgo.time)
         Log.d("OverviewActivity", "Week UserData: $weekUserData")
-        // trying to find issue
-
 
         if (weekUserData != null) {
             calWeekTotalInput.text = weekUserData.calorie.toString()
@@ -125,8 +118,6 @@ class OverviewActivity : AppCompatActivity() {
             calWeekTotalInput.text = "0"
             minWeekTotalInput.text = "0"
         }
-
-
     }
 
 
