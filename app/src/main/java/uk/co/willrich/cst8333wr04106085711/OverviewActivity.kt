@@ -93,18 +93,15 @@ class OverviewActivity : AppCompatActivity() {
 
         // Day totals
         val allDayUserData = dbHelper.getAllUserData(user?.id ?: 0)
-        val dayUserData = allDayUserData.find { isSameDay(it.date.time, currentDate) }
+        val dayTotalCalories = allDayUserData.filter { isSameDay(it.date.time, currentDate) }
+            .sumBy { it.calorie }
+        val dayTotalMinutes = allDayUserData.filter { isSameDay(it.date.time, currentDate) }
+            .sumBy { it.minutes }
 
-        Log.d("OverviewActivity", "Day UserData: $dayUserData")
+        calDayTotalInput.text = dayTotalCalories.toString()
+        minDayTotalInput.text = dayTotalMinutes.toString()
 
-        if (dayUserData != null) {
-            calDayTotalInput.text = dayUserData.calorie.toString()
-            minDayTotalInput.text = dayUserData.minutes.toString()
-        } else {
-            calDayTotalInput.text = "0"
-            minDayTotalInput.text = "0"
-        }
-
+        Log.d("OverviewActivity", "Day UserData: $allDayUserData")
 
         // Week totals
         val oneWeekAgo = Calendar.getInstance()
@@ -113,18 +110,18 @@ class OverviewActivity : AppCompatActivity() {
         val currentTime = Calendar.getInstance().timeInMillis
         val allWeekUserData = dbHelper.getAllUserData(user?.id ?: 0)
 
-// Include the time up to the current moment
-        val weekUserData = allWeekUserData.find { it.date.time >= oneWeekAgo.timeInMillis && it.date.time <= currentTime }
+        // Include the time up to the current moment
+        val weekUserData = allWeekUserData.filter {
+            it.date.time >= oneWeekAgo.timeInMillis && it.date.time <= currentTime
+        }
+
+        val weekTotalCalories = weekUserData.sumBy { it.calorie }
+        val weekTotalMinutes = weekUserData.sumBy { it.minutes }
+
+        calWeekTotalInput.text = weekTotalCalories.toString()
+        minWeekTotalInput.text = weekTotalMinutes.toString()
 
         Log.d("OverviewActivity", "Week UserData: $weekUserData")
-
-        if (weekUserData != null) {
-            calWeekTotalInput.text = weekUserData.calorie.toString()
-            minWeekTotalInput.text = weekUserData.minutes.toString()
-        } else {
-            calWeekTotalInput.text = "0"
-            minWeekTotalInput.text = "0"
-        }
     }
 
     private fun isSameDay(date1: Long, date2: Long): Boolean {
