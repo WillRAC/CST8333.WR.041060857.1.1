@@ -42,6 +42,15 @@ class LogActivity : AppCompatActivity() {
             val userData = UserData(0, userId, currentDate, calorieValue, minuteValue)
             dbHelper.addUserData(userData)
 
+            // Log the data before inserting
+            Log.d("LogActivity", "Adding new data: $userData")
+
+            // Insert the data
+            val rowId = dbHelper.addUserData(userData)
+
+            // Log the result of the insertion
+            Log.d("LogActivity", "Inserted row ID: $rowId")
+
 
             weightLog.text.clear()
             minLog.text.clear()

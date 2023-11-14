@@ -136,5 +136,10 @@ class OverviewActivity : AppCompatActivity() {
                 cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR)
     }
 
+    override fun onResume() {
+        super.onResume()
+        loadDataFromDatabase()
+    }
+
 
 }
