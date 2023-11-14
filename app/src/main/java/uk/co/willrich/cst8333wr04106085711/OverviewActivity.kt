@@ -109,8 +109,12 @@ class OverviewActivity : AppCompatActivity() {
         // Week totals
         val oneWeekAgo = Calendar.getInstance()
         oneWeekAgo.add(Calendar.DAY_OF_MONTH, -7)
+
+        val currentTime = Calendar.getInstance().timeInMillis
         val allWeekUserData = dbHelper.getAllUserData(user?.id ?: 0)
-        val weekUserData = allWeekUserData.find { isSameDay(it.date.time, oneWeekAgo.timeInMillis) }
+
+// Include the time up to the current moment
+        val weekUserData = allWeekUserData.find { it.date.time >= oneWeekAgo.timeInMillis && it.date.time <= currentTime }
 
         Log.d("OverviewActivity", "Week UserData: $weekUserData")
 
