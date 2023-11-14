@@ -147,5 +147,29 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             cursor.close()
         }
     }
+
+    @SuppressLint("Range")
+    fun getAllUserData(userId: Long): List<UserData> {
+        val db = this.readableDatabase
+        val userDataList = mutableListOf<UserData>()
+        val query = "SELECT * FROM $TABLE_USER_DATA WHERE $KEY_USER_ID = $userId"
+        val cursor = db.rawQuery(query, null)
+
+        return try {
+            while (cursor.moveToNext()) {
+                val userData = UserData(
+                    id = cursor.getLong(cursor.getColumnIndex(KEY_ID)),
+                    userId = cursor.getLong(cursor.getColumnIndex(KEY_USER_ID)),
+                    date = Date(cursor.getLong(cursor.getColumnIndex(KEY_DATE))),  // Convert Long to Date
+                    calorie = cursor.getInt(cursor.getColumnIndex(KEY_CALORIE)),
+                    minutes = cursor.getInt(cursor.getColumnIndex(KEY_MINUTES))
+                )
+                userDataList.add(userData)
+            }
+            userDataList
+        } finally {
+            cursor.close()
+        }
+    }
     }
 

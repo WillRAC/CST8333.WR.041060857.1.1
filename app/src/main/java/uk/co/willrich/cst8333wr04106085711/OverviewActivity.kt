@@ -91,10 +91,10 @@ class OverviewActivity : AppCompatActivity() {
         // Get current date in milliseconds
         val currentDate = Calendar.getInstance().timeInMillis
 
-        Log.d("OverviewActivity", "Current Date: $currentDate")
-
         // Day totals
-        val dayUserData = dbHelper.getUserData(user?.id ?: 0, Calendar.getInstance().time)
+        val allDayUserData = dbHelper.getAllUserData(user?.id ?: 0)
+        val dayUserData = allDayUserData.find { isSameDay(it.date, currentDate) }
+
         Log.d("OverviewActivity", "Day UserData: $dayUserData")
 
         if (dayUserData != null) {
@@ -108,7 +108,9 @@ class OverviewActivity : AppCompatActivity() {
         // Week totals
         val oneWeekAgo = Calendar.getInstance()
         oneWeekAgo.add(Calendar.DAY_OF_MONTH, -7)
-        val weekUserData = dbHelper.getUserData(user?.id ?: 0, oneWeekAgo.time)
+        val allWeekUserData = dbHelper.getAllUserData(user?.id ?: 0)
+        val weekUserData = allWeekUserData.find { it.date.time >= oneWeekAgo.timeInMillis }
+
         Log.d("OverviewActivity", "Week UserData: $weekUserData")
 
         if (weekUserData != null) {
@@ -118,9 +120,15 @@ class OverviewActivity : AppCompatActivity() {
             calWeekTotalInput.text = "0"
             minWeekTotalInput.text = "0"
         }
+    }
 
-        val userId = dbHelper.getUser(username ?: "")?.id ?: 0
-        Log.d("OverviewActivity", "User ID: $userId")
+    private fun isSameDay(date1: Long, date2: Long): Boolean {
+        val cal1 = Calendar.getInstance()
+        val cal2 = Calendar.getInstance()
+        cal1.timeInMillis = date1
+        cal2.timeInMillis = date2
+        return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR)
     }
 
 
