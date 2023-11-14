@@ -5,7 +5,9 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -125,6 +127,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     @SuppressLint("Range")
     fun getUserData(userId: Long, date: Date): UserData? {
         val db = this.readableDatabase
+        val formattedDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(date)
         val query = "SELECT * FROM $TABLE_USER_DATA WHERE $KEY_USER_ID = $userId AND $KEY_DATE = ${date.time}"
         val cursor = db.rawQuery(query, null)
 
