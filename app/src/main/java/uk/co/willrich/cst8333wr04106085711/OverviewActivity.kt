@@ -93,7 +93,7 @@ class OverviewActivity : AppCompatActivity() {
 
         // Day totals
         val allDayUserData = dbHelper.getAllUserData(user?.id ?: 0)
-        val dayUserData = allDayUserData.find { isSameDay(it.date, currentDate) }
+        val dayUserData = allDayUserData.find { isSameDay(it.date.time, currentDate) }
 
         Log.d("OverviewActivity", "Day UserData: $dayUserData")
 
@@ -105,11 +105,12 @@ class OverviewActivity : AppCompatActivity() {
             minDayTotalInput.text = "0"
         }
 
+
         // Week totals
         val oneWeekAgo = Calendar.getInstance()
         oneWeekAgo.add(Calendar.DAY_OF_MONTH, -7)
         val allWeekUserData = dbHelper.getAllUserData(user?.id ?: 0)
-        val weekUserData = allWeekUserData.find { it.date.time >= oneWeekAgo.timeInMillis }
+        val weekUserData = allWeekUserData.find { isSameDay(it.date.time, oneWeekAgo.timeInMillis) }
 
         Log.d("OverviewActivity", "Week UserData: $weekUserData")
 
